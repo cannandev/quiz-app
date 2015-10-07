@@ -11,6 +11,8 @@ function progress() {
 	// do fancy class changes on nav#progress .bar + .stops
 }
 
+var questions = [];
+
 var step = {
 	id: 1,
 	title: function() {
@@ -32,6 +34,7 @@ var step = {
 };
 
 var step1 = Object.create(step); // why are we creating objects when the questions share no common values?
+questions.push(step1);
 
 
 $(document).ready(function(){
