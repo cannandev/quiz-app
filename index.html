@@ -12,7 +12,7 @@
 		<div class="container">
 			<h1>New York City Quiz</h1>
 			<h2>Go from Brooklyn to Times Square with your knowledge of the Big Apple!</h2>
-			<div class="start"><i class="fa fa-plus-circle fa-3x"></i></div>
+			<div id="start"><i class="fa fa-plus-circle fa-3x"></i></div>
 			<nav class="progress">
 				<div class="bar"></div>
 				<ul class="stops">
@@ -31,18 +31,18 @@
 				<h1 class="step-title">Question 1</h1>
 				<h2 class="step-question"></h2>
 				<div class="options">
-					<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Option one</label>
-					<label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>Option two</label>
-					<label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Option three</label>
-					<label><input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">Option four</label>
+					<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="0">Option one</label>
+					<label><input type="radio" name="optionsRadios" id="optionsRadios2" value="1" checked>Option two</label>
+					<label><input type="radio" name="optionsRadios" id="optionsRadios3" value="2">Option three</label>
+					<label><input type="radio" name="optionsRadios" id="optionsRadios4" value="3">Option four</label>
 				</div>
-				<button type="submit">Fuhgeddaboudit!</button>
+				<button id="submit" type="submit">Fuhgeddaboudit!</button>
 			</form>
 		</div>
 	</div>
 	<footer>
 		<div class="step-detail">
-			<h1 class="user-response-check">Incorrect</h1>
+			<h1 class="user-response-check"></h1>
 			<p></p>
 		</div>
 	</footer>
