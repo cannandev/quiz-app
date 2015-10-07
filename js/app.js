@@ -12,14 +12,15 @@ function progress() {
 
 var questions = [];
 
-var step = {
+var q1 = {
 	id: 1,
 	title: function() {
 		return 'Question ' + this.id;
 	},
-	question: 'Dolore, a excepturi! Officia distinctio, harum. Cum aut quo optio ips?',
+	question: 'Dolore, a excepturi! Officia distinctio, harum?',
 	choices: ['Option one', 'Option two', 'Option three', 'Option four'],
 	answer: 1,
+	detail: '',
 	listChoices: function() {
 		console.log(this.choices);
 		//loop through choices and wrap each with label/input
@@ -32,18 +33,16 @@ var step = {
 		else {
 			return true;
 		}
-	},
-	detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi rerum aliquam qui commodi, alias quidem minus ex odit, nulla, magnam recusandae et quibusdam laborum error ipsam. Delectus dolores sequi molestiae.',
+	},	
 };
 
-var step1 = Object.create(step);
-var step2 = Object.create(step);
-step2.id = 2;
-step2.question = 'Ut enim ad minim veniam,quis nostrud?';
-step2.answer = 3;
+var q2 = Object.create(q1);
+q2.id = 2;
+q2.question = 'Ut enim ad minim veniam,quis nostrud?';
+q2.answer = 3;
 
-questions.push(step1);
-questions.push(step2);
+questions.push(q1);
+questions.push(q2);
 
 $(document).ready(function(){
 // Do all my functions need to be in the ready function?
