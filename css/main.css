@@ -360,6 +360,7 @@ th {
 html {
   box-sizing: border-box;
   font-size: 16px;
+  text-size-adjust: none;
 }
 *,
 *:before,
@@ -367,6 +368,7 @@ html {
   box-sizing: inherit;
 }
 /* colors */
+/* breakpoints */
 /* layout */
 .container {
   width: 100%;
