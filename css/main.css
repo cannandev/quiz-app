@@ -373,12 +373,12 @@ html {
   padding: 1em;
   margin: 0 auto;
 }
-@media all and (min-width: 960px) {
+@media only screen and (min-device-width: 960px) {
   .container {
     width: 960px;
   }
 }
-@media all and (min-width: 600px) {
+@media only screen and (min-device-width: 600px) {
   #main .container {
     width: 600px;
   }
@@ -398,7 +398,7 @@ footer {
   display: block;
   cursor: pointer;
 }
-@media all and (min-width: 960px) {
+@media only screen and (min-device-width: 960px) {
   .progress {
     position: absolute;
     right: 10px;
@@ -409,7 +409,7 @@ footer {
   border: 1px solid #000000;
   width: 100%;
 }
-@media all and (min-width: 960px) {
+@media only screen and (min-device-width: 960px) {
   .progress nav {
     width: 400px;
   }
