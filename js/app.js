@@ -20,7 +20,7 @@ var q1 = {
 	question: 'Dolore, a excepturi! Officia distinctio, harum?',
 	choices: ['Option one', 'Option two', 'Option three', 'Option four'],
 	answer: 1,
-	detail: '',
+	detail: 'Repellendus voluptatum consequatur molestias harum fuga.',
 	listChoices: function() {
 		console.log(this.choices);
 		//loop through choices and wrap each with label/input
