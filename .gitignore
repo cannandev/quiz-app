@@ -2,3 +2,5 @@
 *.css.map
 less/*
 js/min/*
+.DS_Store
+*.txt
