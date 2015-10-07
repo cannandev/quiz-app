@@ -366,6 +366,7 @@ html {
 *:after {
   box-sizing: inherit;
 }
+/* colors */
 /* layout */
 .container {
   width: 100%;
@@ -396,6 +397,27 @@ footer {
   top: 10px;
   display: block;
   cursor: pointer;
+}
+@media all and (min-width: 960px) {
+  .progress {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+.progress nav {
+  border: 1px solid #000;
+  width: 100%;
+}
+@media all and (min-width: 960px) {
+  .progress nav {
+    width: 400px;
+  }
+}
+.progress nav .bar {
+  height: 2em;
+  width: 25%;
+  background-color: yellow;
 }
 .step button {
   display: block;
