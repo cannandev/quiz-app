@@ -1,10 +1,9 @@
-var counter = 0;
 var questions = [];
 
 function newGame() {
 	//reset counter, status, steps and details
 	console.log('Start a new game!');
-	counter = 0;
+	//counter = 0;
 }
 
 function progress() {
@@ -59,6 +58,7 @@ questions.push(q2);
 questions.push(q3);
 
 $(document).ready(function(){
+	var counter = 0;
 
 	$('#start').click(newGame);
 	showQuestion(questions[counter]);
