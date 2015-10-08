@@ -1,4 +1,5 @@
 var counter = 0;
+var questions = [];
 
 function newGame() {
 	//reset counter, status, steps and details
@@ -10,7 +11,10 @@ function progress() {
 	// do fancy class changes on nav#progress .bar + .stops
 }
 
-var questions = [];
+function drawQuestion(question) {
+	$('.step-title').text(question.title());
+	$('.step-question').text(question.question);	
+}
 
 var q1 = {
 	id: 1,
@@ -41,15 +45,20 @@ q2.id = 2;
 q2.question = 'Ut enim ad minim veniam,quis nostrud?';
 q2.answer = 3;
 
+var q3 = Object.create(q1);
+q3.id = 3;
+q3.question = 'Quis nostrud?';
+q3.answer = 0;
+
 questions.push(q1);
 questions.push(q2);
+questions.push(q3);
 
 $(document).ready(function(){
 // Do all my functions need to be in the ready function?
 	$('#start').click(newGame);
+	drawQuestion(questions[counter]);
 
-	$('.step-title').text(questions[counter].title());
-	$('.step-question').text(questions[counter].question);
 	//step1.showChoices()
 	$('#submit').click(function(e){
 		e.preventDefault();
@@ -64,7 +73,8 @@ $(document).ready(function(){
 		else {
 			$('.step-detail h1').text('Get outta here.');
 		}
-		counter++;				
+		counter++;
+		drawQuestion(questions[counter]);
 	});
 	
 });
