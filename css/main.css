@@ -454,3 +454,6 @@ footer {
 .choices label input {
   margin-right: 1em;
 }
+.step-detail {
+  display: none;
+}
