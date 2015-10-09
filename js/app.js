@@ -1,5 +1,3 @@
-var questions = [];
-
 function newGame() {
 	//reset counter, status, steps and details
 	console.log('Start a new game!');
@@ -21,9 +19,24 @@ function showChoices(question) {
 	}
 }
 
+function submitChoice(question) {
+	var checked = $('input:checked').val();
+	var total = 0;
+	if (question.checkAnswer(checked)) {
+		$('.step-detail h1').text('Hey, Yurright!');
+		progress();
+		total++;
+	}
+	else {
+		$('.step-detail h1').text('Get outta here.');
+	}	
+}
+
 function showDetail(question) {
 	$('.step-detail p').text(question.detail);
 }
+
+var questions = [];
 
 var q1 = {
 	id: 1, // 
@@ -70,14 +83,7 @@ $(document).ready(function(){
 	$('#submit').click(function(e){
 		e.preventDefault();
 		if (counter < questions.length) {
-			var checked = $('input:checked').val();
-			if (questions[counter].checkAnswer(checked)) {
-				$('.step-detail h1').text('Hey, Yurright!');
-				progress();
-			}
-			else {
-				$('.step-detail h1').text('Get outta here.');
-			}			
+			submitChoice(questions[counter]);		
 			showQuestion(questions[counter]);
 			showChoices(questions[counter]);
 		}
