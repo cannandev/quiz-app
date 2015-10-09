@@ -4,9 +4,11 @@ function showQuestion(question) {
 }
 
 function showChoices(question) {
+	// should I use this.question = question instead?
+	var choicesDiv = $('.choices');
+	choicesDiv.empty();
 	for(var i=0; i < question.choices.length; i++) {
-		console.log(question.choices[i]);
-		// wrap in label>input
+		$(choicesDiv).append('<label><input type="radio" name="choicesRadios" value="' + i + '">' + question.choices[i] + '</label>');
 	}
 }
 
@@ -123,7 +125,7 @@ var questions = [
 
 $(document).ready(function(){
 	
-	var counter = 1;
+	var counter = 0;
 
 	$('#start').click(function(){
 		newGame(questions[0]);
@@ -131,15 +133,14 @@ $(document).ready(function(){
 
 	$('#submit').click(function(e){
 		e.preventDefault();
+		submitChoice(questions[counter]);
+		counter++;						
 		if (counter < questions.length) {
-			submitChoice(questions[counter]);		
 			showQuestion(questions[counter]);
 			showChoices(questions[counter]);
 		}
 		else {
 			$('.step').text('Yay! You got # out of ' + questions.length + ' right!');
 		}
-		$('.step-detail').show();
-		counter++;		
 	});
 });
