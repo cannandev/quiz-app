@@ -1,7 +1,6 @@
 function newGame() {
-	//reset counter, status, steps and details
+	//reset to questions[0]
 	console.log('Start a new game!');
-	//counter = 0;
 }
 
 function progress() {
@@ -32,9 +31,9 @@ function submitChoice(question) {
 	}	
 }
 
-function showDetail(question) {
-	$('.step-detail p').text(question.detail);
-}
+// function showDetail(question) {
+// 	$('.step-detail p').text(question.detail);
+// }
 
 var questions = [];
 
@@ -88,7 +87,7 @@ $(document).ready(function(){
 			showChoices(questions[counter]);
 		}
 		else {
-			$('.step').text('Yay! You\'\ve reached the end of the game');
+			$('.step').text('Yay! You got # out of ' + questions.length + ' right!');
 		}
 		counter++;		
 	});
