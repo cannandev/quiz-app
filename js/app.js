@@ -21,6 +21,10 @@ function showChoices(question) {
 	}
 }
 
+function showDetail(question) {
+	$('.step-detail p').text(question.detail);
+}
+
 var q1 = {
 	id: 1, // 
 	title: function() {
@@ -58,27 +62,28 @@ questions.push(q2);
 questions.push(q3);
 
 $(document).ready(function(){
+	
 	var counter = 0;
 
 	$('#start').click(newGame);
-	showQuestion(questions[counter]);
-	showChoices(questions[counter]);
+
 	$('#submit').click(function(e){
 		e.preventDefault();
-		// check if counter < questions.length
-		$('.step-detail p').text(questions[counter].detail);
-
-		var checked = $('input:checked').val();
-		if (questions[counter].checkAnswer(checked)) {
-			$('.step-detail h1').text('Hey, Yurright!');
-			progress();
+		if (counter < questions.length) {
+			var checked = $('input:checked').val();
+			if (questions[counter].checkAnswer(checked)) {
+				$('.step-detail h1').text('Hey, Yurright!');
+				progress();
+			}
+			else {
+				$('.step-detail h1').text('Get outta here.');
+			}			
+			showQuestion(questions[counter]);
+			showChoices(questions[counter]);
 		}
 		else {
-			$('.step-detail h1').text('Get outta here.');
+			$('.step').text('Yay! You\'\ve reached the end of the game');
 		}
-		counter++;
-		showQuestion(questions[counter]);
-		showChoices(questions[counter]);
+		counter++;		
 	});
-	
 });
