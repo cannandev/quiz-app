@@ -36,9 +36,9 @@ function newGame(question) {
 	$('.step-detail').hide();
 }
 
-// function showDetail(question) {
-// 	$('.step-detail p').text(question.detail);
-// }
+function showDetail(question) {
+	$('.step-detail').fadeIn('slow').children('p').text(question.detail);
+}
 
 var questions = [
 	{
@@ -78,7 +78,7 @@ var questions = [
 		question: 'Where is Brooklyn\'\s original Chinatown?',
 		choices: ['Williamsburg', 'Flatbush', 'Sunset Park', 'Sheepshead Bay'],
 		answer: 2,
-		detail: 'The first <strong>Brooklyn Chinatown</strong> (simplified Chinese: 布鲁克林华埠; traditional Chinese: 布魯克林華埠; pinyin: bùlǔkèlín huábù) was originally established in the Sunset Park area of the New York City borough of Brooklyn. The borough has since evolved three larger Chinatowns, between Sunset Park, Bensonhurst, and Avenue U in Sheepshead Bay.',
+		detail: 'The first Brooklyn Chinatown was originally established in the Sunset Park area of the New York City borough of Brooklyn. The borough has since evolved three larger Chinatowns, between Sunset Park, Bensonhurst, and Avenue U in Sheepshead Bay.',
 		checkAnswer: function(checked) {
 			checked = parseInt(checked);
 			if(checked !== this.answer) {
@@ -134,13 +134,15 @@ $(document).ready(function(){
 	$('#submit').click(function(e){
 		e.preventDefault();
 		submitChoice(questions[counter]);
+		showDetail(questions[counter]);
 		counter++;						
 		if (counter < questions.length) {
 			showQuestion(questions[counter]);
 			showChoices(questions[counter]);
 		}
 		else {
-			$('.step').text('Yay! You got # out of ' + questions.length + ' right!');
+			$('.step').slideUp('slow');
+			$('.user-response-check').text('Yay!').next('p').text('You got # out of ' + questions.length + ' right!');
 		}
 	});
 });
