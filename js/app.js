@@ -12,6 +12,10 @@ function showChoices(question) {
 	}
 }
 
+function showDetail(question) {
+	$('.step-detail').fadeIn('slow').children('p').text(question.detail);
+}
+
 function drawProgress() {
 	// do fancy class changes on nav#progress .bar + .stops
 }
@@ -25,10 +29,6 @@ function submitChoice(question) {
 	else {
 		$('.step-detail h1').text('Get outta here.');
 	}
-}
-
-function showDetail(question) {
-	$('.step-detail').fadeIn('slow').children('p').text(question.detail);
 }
 
 function totalCorrect(num) {
