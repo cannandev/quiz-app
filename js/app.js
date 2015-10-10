@@ -34,15 +34,12 @@ function submitChoice(question) {
 	}
 }
 
-function totalCorrect(num) {
-	num++;
-	return num;
-}
-
 function newGame(question) {
 	console.log('Start a new game!');
 	showQuestion(question);
 	showChoices(question);
+	totalCorrect = 0;
+	$('.step').fadeIn('slow');
 	$('.step-detail').hide();
 }
 
@@ -135,6 +132,7 @@ $(document).ready(function(){
 
 	$('#start').click(function(){
 		newGame(questions[0]);
+		counter = 0;
 	});
 
 	$('#submit').click(function(e){
