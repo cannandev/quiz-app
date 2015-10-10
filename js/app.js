@@ -18,16 +18,17 @@ function showDetail(question) {
 	$('.step-detail').fadeIn('slow').children('p').text(question.detail);
 }
 
-function drawProgress() {
-	// do fancy class changes on nav#progress .bar + .stops
+function drawProgress(width) {
+	this.width = width * 20;
+	$('.progress').find('.bar').animate({'width':this.width+'%'}, 'slow');
 }
 
 function submitChoice(question) {
 	var checked = $('input:checked').val();
 	if (question.checkAnswer(checked)) {
 		$('.step-detail h1').text('Hey, Yurright!');
-		drawProgress();
 		totalCorrect++;
+		drawProgress(totalCorrect);
 	}
 	else {
 		$('.step-detail h1').text('Get outta here.');
