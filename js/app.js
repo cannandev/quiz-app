@@ -18,15 +18,22 @@ function drawProgress() {
 
 function submitChoice(question) {
 	var checked = $('input:checked').val();
-	var total = 0;
 	if (question.checkAnswer(checked)) {
 		$('.step-detail h1').text('Hey, Yurright!');
 		drawProgress();
-		total++;
 	}
 	else {
 		$('.step-detail h1').text('Get outta here.');
-	}	
+	}
+}
+
+function showDetail(question) {
+	$('.step-detail').fadeIn('slow').children('p').text(question.detail);
+}
+
+function totalCorrect(num) {
+	num++;
+	return num;
 }
 
 function newGame(question) {
@@ -34,10 +41,6 @@ function newGame(question) {
 	showQuestion(question);
 	showChoices(question);
 	$('.step-detail').hide();
-}
-
-function showDetail(question) {
-	$('.step-detail').fadeIn('slow').children('p').text(question.detail);
 }
 
 var questions = [
@@ -126,6 +129,7 @@ var questions = [
 $(document).ready(function(){
 	
 	var counter = 0;
+	var correct = totalCorrect();
 
 	$('#start').click(function(){
 		newGame(questions[0]);
@@ -142,7 +146,7 @@ $(document).ready(function(){
 		}
 		else {
 			$('.step').slideUp('slow');
-			$('.user-response-check').text('Yay!').next('p').text('You got # out of ' + questions.length + ' right!');
+			$('.user-response-check').text('Yay!').next('p').text('You got ' + correct + ' out of ' + questions.length + ' right!');
 		}
 	});
 });
