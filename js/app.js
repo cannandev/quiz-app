@@ -21,6 +21,7 @@ function showDetail(question) {
 function drawProgress(width) {
 	this.width = width * 20;
 	$('.progress').find('.bar').animate({'width':this.width+'%'}, 'slow');
+	$('.progress .fa').not('.fa-circle').first().removeClass('fa-circle-o').addClass('fa-circle');
 }
 
 function submitChoice(question) {
@@ -37,9 +38,11 @@ function submitChoice(question) {
 
 function newGame(question) {
 	console.log('Start a new game!');
+	totalCorrect = 0;
 	showQuestion(question);
 	showChoices(question);
-	totalCorrect = 0;
+	$('.progress .fa').addClass('fa-circle-o').removeClass('fa-circle');
+	$('.progress').find('.bar').animate({'width':'0%'}, 'slow');
 	$('.step').fadeIn('slow');
 	$('.step-detail').hide();
 }
