@@ -444,6 +444,7 @@ footer {
   font-weight: bold;
   margin-left: -4px;
   text-align: center;
+  text-shadow: 1px 1px 0 #ffffff;
   vertical-align: top;
   width: 20%;
 }
