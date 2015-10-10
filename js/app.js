@@ -1,3 +1,5 @@
+var totalCorrect = 0; // need a better way of storing this var
+
 function showQuestion(question) {
 	$('.step-title').text(question.title)	;
 	$('.step-question').text(question.question);	
@@ -25,6 +27,7 @@ function submitChoice(question) {
 	if (question.checkAnswer(checked)) {
 		$('.step-detail h1').text('Hey, Yurright!');
 		drawProgress();
+		totalCorrect++;
 	}
 	else {
 		$('.step-detail h1').text('Get outta here.');
@@ -129,7 +132,6 @@ var questions = [
 $(document).ready(function(){
 	
 	var counter = 0;
-	var correct = totalCorrect();
 
 	$('#start').click(function(){
 		newGame(questions[0]);
@@ -146,7 +148,7 @@ $(document).ready(function(){
 		}
 		else {
 			$('.step').slideUp('slow');
-			$('.user-response-check').text('Yay!').next('p').text('You got ' + correct + ' out of ' + questions.length + ' right!');
+			$('.user-response-check').text('Yay!').next('p').text('You got ' + totalCorrect + ' out of ' + questions.length + ' right!');
 		}
 	});
 });
