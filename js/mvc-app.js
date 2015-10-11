@@ -41,6 +41,11 @@
 		showDetail: function(d){
 			$('.step-detail').fadeIn('slow').children('p').text(d);
 		},
+		drawProgress: function(width){
+			this.width = width * 20;
+			this.progressBar.animate({'width':this.width+'%'}, 'slow');
+			this.progressStops.not('.fa-circle').first().removeClass('fa-circle-o').addClass('fa-circle');
+		},		
 	};
 
 	var gameData = {
@@ -61,14 +66,15 @@
 		},
 		checkAnswer: function(){
 			this.userChecked = $('input:checked').val();
-			var c = parseInt(this.userChecked); // Is this good practice?
-			if (c !== this.answer) {
+			this.userChecked = parseInt(this.userChecked);
+			console.log(this.userChecked);
+			if (this.userChecked !== this.answer) {
 				gameView.detail.text('Get outta here.');
-				this.totalCorrect++;
-				// drawProgress(totalCorrect);
 			}
 			else {
-				gameView.detail.text('Hey, Yurright!');				
+				this.totalCorrect++;				
+				gameView.detail.text('Hey, Yurright!');
+				gameView.drawProgress(this.totalCorrect);								
 			}
 			gameView.showDetail(this.detail); // Not sure if this is View or Data			
 		},
