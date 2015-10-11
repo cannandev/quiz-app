@@ -20,14 +20,14 @@
 			this.question = $('.step-question');
 			this.choicesList = $('.choices');
 			this.submitButton = $('#submit');			
-			this.detail = $('.step-detail');
+			this.detail = $('.step-detail h1');
 			this.progressBar = $('.progress .bar');
 			this.progressStops = $('.progress .fa');
 			
 			this.startButton.click(gameController.newGame);
 			this.submitButton.click(function(e){
 				e.preventDefault();
-				gameController.getUserChoice();
+				gameController.getUserChoice();				
 			});
 		},
 		render: function(){
@@ -38,10 +38,13 @@
 				$(this.choicesList).append('<label><input type="radio" name="choicesRadios" value="' + i + '">' + gameData.choices[i] + '</label>');
 			}			
 		},
+		showDetail: function(d){
+			$('.step-detail').fadeIn('slow').children('p').text(d);
+		},
 	};
 
 	var gameData = {
-		counter: 0,
+		counter: '',
 		title: 'Question 1',
 		question: 'What was the city was originally called?',
 		choices: ['New Germany', 'New Amsterdam', 'New London', 'New Jack City'],
@@ -51,12 +54,23 @@
 		userChecked: '',
 		resetVariables: function(){
 			console.log('resetVariables');
-			gameData.totalCorrect = 0;			
+			this.counter = 0;
+			this.totalCorrect = 0;
 			//all kinds of goodies
 			gameView.render();
 		},
 		checkAnswer: function(){
-			console.log('checkAnswer');
+			this.userChecked = $('input:checked').val();
+			var c = parseInt(this.userChecked); // Is this good practice?
+			if (c !== this.answer) {
+				gameView.detail.text('Get outta here.');
+				this.totalCorrect++;
+				// drawProgress(totalCorrect);
+			}
+			else {
+				gameView.detail.text('Hey, Yurright!');				
+			}
+			gameView.showDetail(this.detail); // Not sure if this is View or Data			
 		},
 	};
 
@@ -66,12 +80,15 @@
 			gameController.newGame();
 		},
 		getUserChoice: function(){
-			console.log('in getUserChoice');
-			// submitChoice, showDetail, increase counter, showQuestion, showChoices
+			gameData.checkAnswer();
 		},
 		newGame: function(){
-			console.log('in newGame');
+			console.log('in newGame');			
 			gameView.render();
+			gameView.progressStops.addClass('fa-circle-o').removeClass('fa-circle');
+			gameView.progressBar.animate({'width':'0%'}, 'slow');
+			gameView.form.fadeIn('slow');
+			$('.step-detail').hide();	
 		},
 	};
 
