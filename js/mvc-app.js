@@ -138,9 +138,9 @@
 	$(document).ready(gameController.pageLoad);
 
 	// Below makes the objects available to the console. Not necessary for production */
-	window.game = {	
-		gameView: gameView,
-		gameData: gameData,
-		gameController: gameController,
-	};
+	// window.game = {	
+	// 	gameView: gameView,
+	// 	gameData: gameData,
+	// 	gameController: gameController,
+	// };
 })();
