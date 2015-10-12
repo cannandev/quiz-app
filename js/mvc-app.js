@@ -68,8 +68,6 @@
 			});
 		},
 		render: function(){
-console.log('counter: ' + gameData.counter);			
-
 			var q = gameData.questions[gameData.counter]; // Is this a good way?
 			this.title.text(q.title);
 			this.question.text(q.question);
@@ -113,8 +111,8 @@ console.log('counter: ' + gameData.counter);
 				gameView.detail.text('Hey, Yurright!');
 				gameView.drawProgress(this.totalCorrect);								
 			}
+			gameView.showDetail(this.questions[this.counter].detail); // Not sure if this is View or Data						
 			this.counter++;
-			gameView.showDetail(this.questions[this.counter].detail); // Not sure if this is View or Data			
 		},
 	};
 
@@ -125,7 +123,13 @@ console.log('counter: ' + gameData.counter);
 		},
 		submitUserChoice: function(){
 			gameData.checkAnswer();
-			gameView.render();
+			if(gameData.counter < gameData.questions.length) {
+				gameView.render();
+			}
+			else {
+				gameView.form.slideUp('slow');
+				gameView.detail.text('Yay!').next('p').text('You got ' + gameData.totalCorrect + ' out of ' + gameData.questions.length + ' right!');
+			}
 		},
 		newGame: function(){
 			gameData.resetVariables();	
