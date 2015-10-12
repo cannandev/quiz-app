@@ -67,17 +67,16 @@
 				gameController.submitUserChoice();				
 			});
 		},
-		render: function(){
-			var q = gameData.questions[gameData.counter]; // Is this a good way?
-			this.title.text(q.title);
-			this.question.text(q.question);
+		render: function(ques){
+			this.title.text(ques.title);
+			this.question.text(ques.question);
 			this.choicesList.empty();
-			for(var i=0; i < q.choices.length; i++) {
-				$(this.choicesList).append('<label><input type="radio" name="choicesRadios" value="' + i + '">' + q.choices[i] + '</label>');
+			for(var i=0; i < ques.choices.length; i++) {
+				$(this.choicesList).append('<label><input type="radio" name="choicesRadios" value="' + i + '">' + ques.choices[i] + '</label>');
 			}			
 		},
-		showDetail: function(d){
-			$('.step-detail').fadeIn('slow').children('p').text(d);
+		showDetail: function(detail){
+			$('.step-detail').fadeIn('slow').children('p').text(detail);
 		},
 		drawProgress: function(width){
 			this.width = width * 20;
@@ -97,7 +96,7 @@
 			gameView.progressStops.addClass('fa-circle-o').removeClass('fa-circle');
 			gameView.progressBar.animate({'width':'0%'}, 'slow');
 			gameView.form.fadeIn('slow');
-			gameView.render();
+			gameView.render(this.questions[0]);
 			$('.step-detail').hide();
 		},
 		checkAnswer: function(){
@@ -124,7 +123,7 @@
 		submitUserChoice: function(){
 			gameData.checkAnswer();
 			if(gameData.counter < gameData.questions.length) {
-				gameView.render();
+				gameView.render(gameData.questions[gameData.counter]);
 			}
 			else {
 				gameView.form.slideUp('slow');
