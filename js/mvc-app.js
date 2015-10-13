@@ -137,10 +137,28 @@
 
 	$(document).ready(gameController.pageLoad);
 
-	// Below makes the objects available to the console. Not necessary for production */
+	//Below makes the objects available to the console. Not necessary for production */
 	// window.game = {	
 	// 	gameView: gameView,
 	// 	gameData: gameData,
 	// 	gameController: gameController,
 	// };
+
+	window.game = JSON.parse(JSON.stringify(gameData.questions));
+	/* forEach function */
+	window.game.forEach(function(question){
+		var correct = 2;		
+	  if(question.answer === correct) {
+	  	console.log('Yay! You got ' + question.title + ' correct.');
+	  }
+	});
+
+	/* filter function */
+	window.game.filter(function(question){
+	  return question.answer === 2;
+	}); // [Object, Object]
+
+
+
+
 })();
