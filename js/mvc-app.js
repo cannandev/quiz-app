@@ -68,7 +68,7 @@
 			});
 		},
 		render: function(ques){
-			this.title.text(ques.title);
+			//this.title.text(ques.title);
 			this.question.text(ques.question);
 			this.choicesList.empty();
 			for(var i=0; i < ques.choices.length; i++) {

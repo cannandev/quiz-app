@@ -371,9 +371,9 @@ html {
 /* breakpoints */
 /* layout */
 body {
-  background: #000000 url(../images/NYC_Subway_6_Train.jpg) top center no-repeat;
+  background: #000 url(../images/NYC_Subway_6_Train.jpg) top center no-repeat;
   background-size: cover;
-  color: #ffffff;
+  color: #fff;
 }
 .container {
   width: 100%;
@@ -395,7 +395,15 @@ header {
 }
 header h1,
 header h2 {
-  text-shadow: 3px 3px 0 #000000;
+  text-shadow: 3px 3px 0 #000;
+}
+header h2 {
+  font-size: 1.2em;
+}
+@media only screen and (min-width: 600px) {
+  header h2 {
+    font-size: 1.5em;
+  }
 }
 footer {
   background-color: rgba(0, 0, 0, 0.2);
@@ -419,7 +427,7 @@ footer {
   }
 }
 .progress nav {
-  border: 2px solid #000000;
+  border: 2px solid #000;
   width: 100%;
 }
 @media only screen and (min-width: 960px) {
@@ -438,13 +446,13 @@ footer {
   padding-left: 0;
 }
 .progress .stops li {
-  color: #000000;
+  color: #000;
   display: inline-block;
   font-size: .8em;
   font-weight: bold;
   margin-left: -4px;
   text-align: center;
-  text-shadow: 1px 1px 0 #ffffff;
+  text-shadow: 1px 1px 0 #fff;
   vertical-align: top;
   width: 20%;
 }
@@ -463,12 +471,12 @@ footer {
   border: #808080;
   border-radius: 1em;
   padding: 2em;
-  color: #000000;
+  color: #000;
 }
 .step button {
   border: 1px solid #666666;
   border-radius: 5px;
-  color: #000000;
+  color: #000;
   display: block;
   margin: 2em auto 0 auto;
   padding: 10px;
